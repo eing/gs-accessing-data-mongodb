@@ -23,3 +23,7 @@ do
 done
 
 mvn -Dtest=${tests} test
+if [ x${CIRCLE_TEST_REPORTS} != x ]; then
+    mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+fi
