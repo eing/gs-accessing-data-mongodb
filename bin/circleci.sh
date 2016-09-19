@@ -23,6 +23,13 @@ do
 done
 
 mvn -Dtest=${tests} test
+
+########################################################
+# Note. This is required if run against multiple VMs.
+# If this is in circle.yml, it appears that CircleCI
+# only creates this directory once and only 1 test report
+# is uploaded.
+########################################################
 if [ x${CIRCLE_TEST_REPORTS} != x ]; then
     mkdir -p $CIRCLE_TEST_REPORTS/junit/
     find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
