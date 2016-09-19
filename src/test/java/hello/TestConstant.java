@@ -1,8 +1,8 @@
 package hello;
 
 public enum TestConstant {
-    MAX_CUSTOMERS (3),
-    MAX_WAIT_BETWEEN_ACTIONS(50);
+    MAX_CUSTOMERS (50),
+    MAX_WAIT_BETWEEN_ACTIONS(1500);
 
     private int value;
 
