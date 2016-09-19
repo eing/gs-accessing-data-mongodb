@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerRepositoryTests {
+public class CustomerRepositoryTest {
 
     @Autowired
     CustomerRepository repository;

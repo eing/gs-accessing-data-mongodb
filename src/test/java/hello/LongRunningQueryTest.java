@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -16,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LongRunningDeleteTests {
-    private final Logger logger = LoggerFactory.getLogger(LongRunningDeleteTests.class);
+public class LongRunningQueryTest {
+    private final Logger logger = LoggerFactory.getLogger(LongRunningQueryTest.class);
 
     @Autowired
     CustomerRepository repository;
@@ -32,25 +31,23 @@ public class LongRunningDeleteTests {
    }
 
     @Test
-    public void deleteLoadTest() throws Exception {
+    public void findsByExample() throws Exception {
         long startTime = System.currentTimeMillis();
 
         List<Customer> result = repository.findByFirstName(this.getClass().getCanonicalName());
-        assertThat(result.size()).isGreaterThanOrEqualTo(TestConstant.MAX_CUSTOMERS.value());
 
+        // Simulating long tests to demonstrate Circle CI test parallelization feature
         for (Customer customer : result) {
-            // Simulating long tests to demonstrate Circle CI test parallelization feature
             Thread.sleep(TestConstant.MAX_WAIT_BETWEEN_ACTIONS.value());
-            repository.delete(customer);
-            Customer afterDelete = repository.findOne(Example.of(customer));
-            assertThat(afterDelete).isNull();
+            System.out.println(customer.toString());
         }
+
+        assertThat(result.size()).isGreaterThanOrEqualTo(TestConstant.MAX_CUSTOMERS.value());
 
         long endTime = System.currentTimeMillis();
         System.out.println("***** For " + TestConstant.MAX_CUSTOMERS.value() + " customers & wait time of "
                 + (float) (TestConstant.MAX_WAIT_BETWEEN_ACTIONS.value())/1000 + " seconds *****");
         System.out.println("*****     Elapsed time is " +(endTime - startTime)/1000 + " seconds");
     }
-
 
 }
