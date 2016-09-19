@@ -8,6 +8,11 @@ projects: [spring-data-mongodb]
 :project_id: gs-accessing-data-mongodb
 This guide walks you through the process of using http://projects.spring.io/spring-data-mongodb/[Spring Data MongoDB] to build an application that stores data in and retrieves it from http://www.mongodb.org/[MongoDB], a document-based database.
 
+== What this fork does
+
+1. Create a dockerfile
+2. Build and run tests in CircleCI
+3. Experiment with CircleCI test parallelization feature
 
 == What you'll build
 
