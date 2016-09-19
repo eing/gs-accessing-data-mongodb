@@ -9,5 +9,5 @@ test:
 
 test:
   override:
-    - ./test/circleci.sh:
+    - ./bin/circleci.sh:
         parallel: true
