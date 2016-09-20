@@ -1,7 +1,7 @@
 #!/bin/sh
-cd $(dirname $0)
+echo **** $(dirname) $0/..
+cd $(dirname $0)/..
 
-cd ..
 mvn clean package
 ret=$?
 if [ $ret -ne 0 ]; then

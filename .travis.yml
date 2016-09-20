@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: java
 jdk:
 - oraclejdk8
@@ -8,7 +8,7 @@ script:
 - bin/run.sh
 env:
   global:
-    - CI_NODE_TOTAL=4
+    - CI_NODE_TOTAL=1
   matrix:
     - CI_NODE_INDEX=0
     - CI_NODE_INDEX=1
