@@ -5,7 +5,12 @@ jdk:
 services:
 - mongodb
 script:
-- test/run.sh
-notifications:
-  slack:
-    secure: dygx7a6CJf458EWT8LpehLyIyafsPXAn+77ELPykbIVQzoN/vYZHWWzuYu7agoG44xrLEasLENPcK+6VClERFhaKl9TPfNGS846KtenTe4XURMr1Yv+SiQqrZ9ccr3tEaWzVtLKlOU5hzCZozevwJJLap3Xpc9hXNgo+QVrr53k=
+- bin/run.sh
+env:
+  global:
+    - CI_NODE_TOTAL=4
+  matrix:
+    - CI_NODE_INDEX=0
+    - CI_NODE_INDEX=1
+    - CI_NODE_INDEX=2
+    - CI_NODE_INDEX=3
