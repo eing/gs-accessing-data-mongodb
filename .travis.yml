@@ -5,8 +5,13 @@ jdk:
 services:
 - mongodb
 script:
-- bin/run.sh
+-  mvn clean install
+#- bin/run.sh
 env:
+  - "TEST_CROUP=1"
+  - "TEST_CROUP=2"
+  - "TEST_CROUP=3"
+  - "TEST_CROUP=4"
   global:
     - CI_NODE_TOTAL=4
   matrix:
