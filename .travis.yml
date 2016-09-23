@@ -1,21 +1,23 @@
 sudo: true
+
 language: java
+
 jdk:
 - oraclejdk8
+
 services:
 - mongodb
+
 script:
--  mvn clean install
+- mvn clean install
+
 #- bin/run.sh
+
 env:
   - "TEST_CROUP=1"
   - "TEST_CROUP=2"
-  - "TEST_CROUP=3"
-  - "TEST_CROUP=4"
   global:
-    - CI_NODE_TOTAL=4
+    - CI_NODE_TOTAL=2
   matrix:
     - CI_NODE_INDEX=0
     - CI_NODE_INDEX=1
-    - CI_NODE_INDEX=2
-    - CI_NODE_INDEX=3
