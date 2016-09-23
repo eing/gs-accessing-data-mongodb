@@ -11,8 +11,6 @@ services:
 script:
 - mvn clean install
 
-#- bin/run.sh
-
 env:
   - "TEST_CROUP=1"
   - "TEST_CROUP=2"
