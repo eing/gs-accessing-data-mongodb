@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ########################################################
-# Maven Surefire does not support parallelism, hence 
-# you'll need a shell script to override test execution 
-# to take advantage of CircleCI multiple VMs support.
+# To take advantage of CircleCI multiple VMs support in 
+# addition to maven surefire forking approach.
 # http://stackoverflow.com/questions/26007772/how-can-i-take-advantage-of-circleci-parallelism-in-my-java-maven-surefire-p
 ########################################################
 
@@ -25,7 +24,7 @@ done
 mvn -Dtest=${tests} test
 
 ########################################################
-# Note. This is required if run against multiple VMs.
+# Note. This is required if run against multiple VMs/dockers.
 # If this is in circle.yml, it appears that CircleCI
 # only creates this directory once and only 1 test report
 # is uploaded.

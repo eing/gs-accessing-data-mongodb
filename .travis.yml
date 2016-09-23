@@ -12,8 +12,6 @@ script:
 - mvn clean install
 
 env:
-  - "TEST_CROUP=1"
-  - "TEST_CROUP=2"
   global:
     - CI_NODE_TOTAL=2
   matrix:
